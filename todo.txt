@@ -1,0 +1,2 @@
+- make an of length 60 from 1 to 59
+- display graph of array
