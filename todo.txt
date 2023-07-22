@@ -1,7 +1,8 @@
-- Install and configure vue
-- Install and configure test utilities (vitest? jest?)
+X Install Node + npm
+X Install and configure vue
+X Install and configure test utilities (vitest? jest?)
 - Install and configure typescript
-- Install and configure pinia
+X Install and configure pinia
 - Create vue app
 - Create router and root component
 - Component for graph frame
