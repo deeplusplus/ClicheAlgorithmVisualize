@@ -1,2 +1,13 @@
-- make an of length 60 from 1 to 59
-- display graph of array
+- Install and configure vue
+- Install and configure test utilities (vitest? jest?)
+- Install and configure typescript
+- Install and configure pinia
+- Create vue app
+- Create router and root component
+- Component for graph frame
+- 5 components for 5 sort algos
+  - On click, 
+- Play button
+  - On click, perform selected sort
+- Reset button
+  - On click, randomize graph
