@@ -25,52 +25,28 @@ function mergeSortClick(event : Event): void {
   sortableColumns.value = mergeSort(sortableColumns.value)
 }
 
-function mergeSort(m : SortableColumnStyle[]): SortableColumnStyle[] {
-    if(m.length <= 1) {
-      return m
-    }
-
-    let left : SortableColumnStyle[] = []
-    let right : SortableColumnStyle[] = []
-    m.forEach((x, index) => {
-      if(index < (m.length)/2) {
-        left.push(x)
-      }
-      else { 
-        right.push(x)
-      }      
-    });
-
-    left = mergeSort(left)
-    right = mergeSort(right)
-
-    return merge(left, right)
+function mergeSort(sortableColumnArray: SortableColumnStyle[]) : SortableColumnStyle[] {
+  const half = sortableColumnArray.length / 2
+  
+  if(sortableColumnArray.length < 2){
+    return sortableColumnArray 
+  }
+  
+  const left = sortableColumnArray.splice(0, half)
+  return merge(mergeSort(left),mergeSort(sortableColumnArray))
 }
 
-function merge(left: SortableColumnStyle[], right: SortableColumnStyle[]): SortableColumnStyle[] {
-  let result: SortableColumnStyle[] = []
-
-  while (left.length != 0 && right.length != 0) {
-    if (left[0].numericValue <= right[0].numericValue) {
-      result.push(left[0])
-      left = left.slice(1, left.length - 1)
+function merge(leftArray: SortableColumnStyle[], rightArray: SortableColumnStyle[]) {
+    let sortableColumnSubArray: SortableColumnStyle[] = []
+    while (leftArray.length && rightArray.length) {
+        if (leftArray[0].numericValue < rightArray[0].numericValue) {
+            sortableColumnSubArray.push(leftArray.shift())
+        } else {
+            sortableColumnSubArray.push(rightArray.shift())
+        }
     }
-    else {
-      result.push(right[0])
-      right = right.slice(1, right.length - 1)
-    }
-
-  }
-
-  while (left.length != 0) {
-    result.push(left[0])
-    left = left.slice(1, left.length - 1)
-  }
-  while (right.length != 0) {
-    result.push(right[0])
-    right = right.slice(1, right.length - 1)
-  }
-  return result
+    
+    return [ ...sortableColumnSubArray, ...leftArray, ...rightArray ]
 }
 
 </script>

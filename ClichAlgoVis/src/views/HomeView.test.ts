@@ -14,7 +14,7 @@ describe("HomeView", () => {
       
     })
 
-    test("should have sorted 100 columns after clicking Merge Sort button", () => {
+    test("should have sorted 100 columns after clicking Merge Sort button", async() => {
 
         const wrapper: VueWrapper = mount(HomeView)
         const range: number[] = [...Array(100).keys()]
@@ -23,7 +23,7 @@ describe("HomeView", () => {
       
         expect(button.text()).toEqual("Merge Sort")
 
-        button.trigger('click')
+        await button.trigger('click')
 
         const columns : DOMWrapper<HTMLElement>[] = wrapper.findAll(".column")
 
