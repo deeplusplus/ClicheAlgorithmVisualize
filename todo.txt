@@ -1,13 +1,16 @@
 X Install Node + npm
 X Install and configure vue
 X Install and configure test utilities (vitest? jest?)
-- Install and configure typescript
+X Mess around A LOT with ESLint and TS configs.  Learn that they are importantly distinct.
+X Install and configure typescript
 X Install and configure pinia
-- Create vue app
-- Create router and root component
+X Create vue app
+X Create router and root component
 - Component for graph frame
+  - Bar component (Has height y and horizontal position x)
+  - Frame component (Has collection of bar components)
 - 5 components for 5 sort algos
-  - On click, 
+  - On click?
 - Play button
   - On click, perform selected sort
 - Reset button
