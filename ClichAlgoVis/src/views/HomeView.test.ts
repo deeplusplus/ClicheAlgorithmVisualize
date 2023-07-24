@@ -32,14 +32,23 @@ describe("HomeView", () => {
         })
     })
 
-    test.skip("should have 100 unsorted columns after clicking Reset button", () => {
-
+    test("should have 100 unsorted columns after clicking Reset button", async () => {
         const wrapper: VueWrapper = mount(HomeView)
+        const range: number[] = [...Array(100).keys()]
 
-        const button : DOMWrapper<HTMLElement> = wrapper.find("button.reset-button")
-      
-        expect(button.text()).toEqual("Reset")
+        const resetButton : DOMWrapper<HTMLElement> = wrapper.find("button.reset-button")
+        const mergeButton : DOMWrapper<HTMLElement> = wrapper.find("button.merge-button")
+        expect(resetButton.text()).toEqual("Reset")
 
-        button.trigger('click')
+        await mergeButton.trigger('click')
+
+        await resetButton.trigger('click')
+
+        const columns : DOMWrapper<HTMLElement>[] = wrapper.findAll(".column")
+
+        range.forEach(num => {
+            expect(columns[num].element.style.height).not.toEqual(`${num + 1}%`)
+        })
+
     })
 })

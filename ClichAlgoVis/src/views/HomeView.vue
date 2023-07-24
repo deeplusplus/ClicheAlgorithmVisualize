@@ -21,6 +21,10 @@ function shuffleArray(array: Ref<SortableColumnStyle[]>): void {
   }
 }
 
+function resetClick(event: Event) : void { 
+  shuffleArray(sortableColumns)
+}
+
 function mergeSortClick(event : Event): void {
   sortableColumns.value = mergeSort(sortableColumns.value)
 }
@@ -61,7 +65,7 @@ function merge(leftArray: SortableColumnStyle[], rightArray: SortableColumnStyle
       </div>
     </div>
     <button class="merge-button" @click="mergeSortClick">Merge Sort</button>
-    <button class="reset-button">Reset</button>
+    <button class="reset-button" @click="resetClick">Reset</button>
   </main>
 </template>
 
